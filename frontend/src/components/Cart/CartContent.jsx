@@ -19,7 +19,7 @@ const CartContent = () => {
       color: "Blue",
       quantity: 1,
       price: 25,
-      image: "https://picsum.photos/200?random=1",
+      image: "https://picsum.photos/200?random=2",
     },
     {
       productId: 3,
@@ -28,43 +28,64 @@ const CartContent = () => {
       color: "Yellow",
       quantity: 1,
       price: 40,
-      image: "https://picsum.photos/200?random=1",
+      image: "https://picsum.photos/200?random=3",
     },
   ];
   return (
-    <div>
+    <div className="space-y-4">
       {cartProducts.map((product, index) => (
         <div
           key={index}
-          className="flex items-start justify-between py-4 border-b"
+          className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-white"
         >
-          <div className="flex items-start">
+          {/* Product Left Side */}
+          <div className="flex items-start sm:items-center gap-4">
+            {/* Image */}
             <img
               src={product.image}
               alt={product.name}
-              className="w-20 h-24 object-cover mr-4 rounded"
+              className="w-24 h-28 sm:w-28 sm:h-32 object-cover rounded-xl border border-gray-300"
             />
+
+            {/* Product Info */}
             <div>
-              <h3>{product.name}</h3>
-              <p className="text-sm text-gray-500">
-                size:{product.size} | color:{product.color}
+              <h3 className="text-lg font-semibold text-gray-800">
+                {product.name}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Size:{" "}
+                <span className="font-medium text-gray-700">
+                  {product.size}
+                </span>{" "}
+                | Color:{" "}
+                <span className="font-medium text-gray-700">
+                  {product.color}
+                </span>
               </p>
-              <div className="flex items-center mt-2">
-                <button className="border rounded px-2 py-1 text-xl font-medium">
+
+              {/* Quantity Controls */}
+              <div className="flex items-center gap-3 mt-3">
+                <button className="border cursor-pointer border-gray-300 rounded-md w-8 h-8 flex items-center justify-center text-lg font-bold hover:bg-gray-100 transition">
                   -
                 </button>
-                <span className="mx-4">{product.quantity}</span>
-                <button className="border rounded px-2 py-1 text-xl font-medium">
+                <span className="font-medium text-gray-700">
+                  {product.quantity}
+                </span>
+                <button className="border cursor-pointer border-gray-300 rounded-md w-8 h-8 flex items-center justify-center text-lg font-bold hover:bg-gray-100 transition">
                   +
                 </button>
               </div>
             </div>
-            <div>
-              <p>${product.price.toLocaleString()}</p>
-              <button>
-                <RiDeleteBin3Line className="h-6 w-6 mt-2 text-red-600" />
-              </button>
-            </div>
+          </div>
+
+          {/* Product Price and Delete */}
+          <div className="flex flex-row sm:flex-col items-center sm:items-end gap-3 mt-4 sm:mt-0">
+            <p className="text-lg font-semibold text-gray-900">
+              ${product.price.toLocaleString()}
+            </p>
+            <button className="text-red-600 cursor-pointer hover:text-red-700 transition">
+              <RiDeleteBin3Line className="h-6 w-6" />
+            </button>
           </div>
         </div>
       ))}

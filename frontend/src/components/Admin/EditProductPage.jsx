@@ -1,4 +1,3 @@
-import { Collection } from "mongoose";
 import React, { useState } from "react";
 
 const EditProductPage = () => {

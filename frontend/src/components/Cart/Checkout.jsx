@@ -168,42 +168,69 @@ const Checkout = () => {
         </form>
       </div>
       {/* Right Section */}
-      <div className="bg-gray-50 p-6 rounded-lg">
-        <h3 className="text-lg mb-4">Order Summary</h3>
-        <div className="border-t py-4 mb-4">
+      <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+        {/* Heading */}
+        <h3 className="text-2xl font-semibold mb-6 text-gray-800 flex items-center gap-2">
+          Order Summary
+        </h3>
+
+        {/* Product List */}
+        <div className="divide-y divide-gray-200 mb-6">
           {cart.products.map((product, index) => (
             <div
               key={index}
-              className="flex items-start justify-between p-2 border-b"
+              className="flex flex-col sm:flex-row sm:items-center justify-between py-4"
             >
-              <div className="flex items-start">
+              {/* Left side - Image + Info */}
+              <div className="flex items-start sm:items-center gap-4">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-20 h-24 object-over mr-4"
+                  className="w-20 h-24 object-cover rounded-lg border border-gray-200"
                 />
+
+                <div>
+                  <h3 className="text-md font-semibold text-gray-800">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    Size:{" "}
+                    <span className="font-medium text-gray-700">
+                      {product.size}
+                    </span>
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    Color:{" "}
+                    <span className="font-medium text-gray-700">
+                      {product.color}
+                    </span>
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h3 className="text-md">{product.name}</h3>
-                <p className="text-gray-500">Size:{product.size}</p>
-                <p className="text-gray-500">Color:{product.color}</p>
-              </div>
-              <p className="text-xl">${product.price?.toLocaleString()}</p>
+              {/* Right side - Price */}
+              <p className="text-lg sm:text-xl font-semibold text-gray-900 mt-2 sm:mt-0">
+                ${product.price?.toLocaleString()}
+              </p>
             </div>
           ))}
         </div>
-        <div className="flex justify-between items-center text-lg mb-4">
-          <p>Subtotal</p>
-          <p>${cart.totalPrice?.toLocaleString()}</p>
-        </div>
-        <div className="flex justify-between items-center text-lg">
-          <p>Shipping</p>
-          <p>Free</p>
-        </div>
-        <div className="flex justify-between items-center text-lg mt-4 border-t pt-4">
-          <p>Total</p>
-          <p>${cart.totalPrice?.toLocaleString()}</p>
+
+        {/* Summary Section */}
+        <div className="space-y-3 text-gray-700">
+          <div className="flex justify-between items-center text-base">
+            <p>Subtotal</p>
+            <p className="font-medium">${cart.totalPrice?.toLocaleString()}</p>
+          </div>
+          <div className="flex justify-between items-center text-base">
+            <p>Shipping</p>
+            <p className="font-medium text-green-600">Free</p>
+          </div>
+
+          <div className="border-t border-gray-200 pt-4 mt-4 flex justify-between items-center text-lg font-semibold text-gray-900">
+            <p>Total</p>
+            <p>${cart.totalPrice?.toLocaleString()}</p>
+          </div>
         </div>
       </div>
     </div>

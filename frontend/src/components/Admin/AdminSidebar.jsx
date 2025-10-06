@@ -1,5 +1,11 @@
 import React from "react";
-import { FaBoxOpen, FaClipboardList, FaSignOutAlt, FaStore, FaUser } from "react-icons/fa";
+import {
+  FaBoxOpen,
+  FaClipboardList,
+  FaSignOutAlt,
+  FaStore,
+  FaUser,
+} from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
@@ -50,7 +56,7 @@ const AdminSidebar = () => {
           <span>Orders</span>
         </NavLink>
         <NavLink
-          to="/admin/shop"
+          to="/"
           className={({ isActive }) =>
             isActive
               ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2 "
@@ -66,8 +72,8 @@ const AdminSidebar = () => {
           onClick={handleLogout}
           className="w-full bg-red-500 hover:red-600 text-white py-2 px-4 rounded flex items-center justify-center cursor-pointer space-x-2"
         >
-            <FaSignOutAlt/>
-            <span>Logout</span>
+          <FaSignOutAlt />
+          <span>Logout</span>
         </button>
       </div>
     </div>
